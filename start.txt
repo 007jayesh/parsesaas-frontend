@@ -1,0 +1,37 @@
+ Backend:
+
+  ssh root@172.105.37.137
+  cd /opt/parsesaas/backend
+  source venv/bin/activate
+  python main.py &
+
+  Frontend:
+
+  cd /opt/parsesaas
+  npm start &
+
+  Check if services are running:
+
+  ps aux | grep python
+  ps aux | grep node
+
+  Stop services (if needed):
+
+  pkill -f python
+  pkill -f node
+
+  Restart both services:
+
+  # Stop both
+  pkill -f python && pkill -f node
+
+  # Start backend
+  cd /opt/parsesaas/backend && source venv/bin/activate && python
+  main.py &
+
+  # Start frontend  
+  cd /opt/parsesaas && npm start &
+
+  The & runs them in the background so you can continue using the
+  terminal. Your app will be accessible at
+  https://thebankstatementparser.com.
